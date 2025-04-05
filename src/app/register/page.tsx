@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import axios from "axios";
-
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8082";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -18,26 +15,14 @@ export default function RegisterPage() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-
-    try {
-      const response = await axios.post(`${SERVER_URL}/api/auth/register`, {
-        username: formData.name,
-        email: formData.email,
-        password_hash: formData.password,
-        role: "user",
-      });
-      console.log("Registration successful:", response.data);
-      alert("Registration successful!");
-    } catch (error) {
-      console.error("Error during registration:", error);
-      alert("Registration failed. Please try again.");
-    }
+    // Handle form submission logic here
+    console.log("Form submitted:", formData);
   };
 
   return (
