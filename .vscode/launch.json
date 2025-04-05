@@ -7,9 +7,27 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "name": "Debug Client in Chrome",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true // Ensures source maps are used for debugging
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Server (Next.js)",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "dev"
+            ],
+            "port": 9229, // Default Node.js debugging port
+            "skipFiles": ["<node_internals>/**"],
+            "console": "integratedTerminal",
+            "outputCapture": "std", // Ensures logs are captured in the debugger
+            "env": {
+                "NODE_OPTIONS": "--inspect" // Enables debugging for the server
+            }
         }
     ]
 }

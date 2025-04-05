@@ -1,7 +1,4 @@
-// filepath: /Users/novanovriansyah/code/novai_hris/novai-hris-fe-ts/next.config.ts
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+module.exports = {
   async rewrites() {
     return [
       {
@@ -11,5 +8,3 @@ const nextConfig: NextConfig = {
     ];
   },
 };
-
-export default nextConfig;
